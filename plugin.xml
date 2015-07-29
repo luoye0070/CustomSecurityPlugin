@@ -1,0 +1,33 @@
+<plugin name='custom-security-plugin' version='0.1' grailsVersion='2.2 &gt; *'>
+  <author>Your name</author>
+  <title>Custom Security Plugin Plugin</title>
+  <description>Brief summary/description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/custom-security-plugin</documentation>
+  <type>CustomSecurityPluginGrailsPlugin</type>
+  <resources>
+    <resource>BootStrap</resource>
+    <resource>com.lj.csp.controller.page.LoginController</resource>
+    <resource>com.lj.csp.controller.page.LogoutController</resource>
+    <resource>com.lj.csp.controller.page.securitymanage.UserApiController</resource>
+    <resource>com.lj.csp.data.Authority</resource>
+    <resource>com.lj.csp.data.Member</resource>
+    <resource>com.lj.csp.data.MemberAuthority</resource>
+    <resource>com.lj.csp.data.Requestmap</resource>
+    <resource>com.lj.csp.data.Roles</resource>
+    <resource>com.lj.csp.data.RolesAuthority</resource>
+    <resource>com.lj.csp.service.security.AuthorityService</resource>
+    <resource>com.lj.csp.service.security.MemberService</resource>
+    <resource>com.lj.csp.service.security.RequestmapService</resource>
+    <resource>com.lj.csp.service.security.RolesService</resource>
+    <resource>com.lj.csp.service.security.UserApiService</resource>
+  </resources>
+  <repositories>
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+  </repositories>
+  <dependencies />
+  <plugins />
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>

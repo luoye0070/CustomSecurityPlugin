@@ -1,0 +1,10 @@
+target/
+test/
+.idea/
+.classpath
+.project
+application.properties
+CustomSecurityPlugin.iml
+CustomSecurityPlugin-grailsPlugins.iml
+workspace.xml
+grails-custom-security-plugin-*.zip
