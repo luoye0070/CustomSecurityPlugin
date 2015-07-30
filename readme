@@ -17,3 +17,8 @@ userApiService.init();
 
 3、请安装插件：
 plugins.spring-security-core=1.2.7.3
+
+4、由于在CustomSecurityPluginGrailsPlugin排除了所用的的jar包，所以请添加依赖的jar包
+ json-simple-1.1.jar
+ spring-security-core-3.0.7.RELEASE.jar
+ spring-security-web-3.0.7.RELEASE.jar
