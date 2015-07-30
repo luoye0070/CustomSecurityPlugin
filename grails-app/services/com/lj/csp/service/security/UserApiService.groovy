@@ -30,13 +30,14 @@ class UserApiService {
     void initRequest(){
         String sql="delete from Requestmap where url in (:url)"
         Requestmap.executeUpdate(sql,[url:['/userApi/roles/**','/userApi/authority/**',
-         '/requestmap/**','/userApi/member/**'
+         '/requestmap/**','/userApi/member/**','/userApi/index/**'
         ]])
 
+        new Requestmap(url:'/userApi/**',configAttribute:"hasAnyRole('R_DEV','R_ADMIN')").save(flush: true)
         new Requestmap(url:'/userApi/roles/**',configAttribute:"hasRole('R_DEV')").save(flush: true)
         new Requestmap(url:'/userApi/authority/**',configAttribute:"hasRole('R_DEV')").save(flush: true)
         new Requestmap(url:'/userApi/requestmap/**',configAttribute:"hasRole('R_DEV')").save(flush: true)
-        new Requestmap(url:'/userApi/member/**',configAttribute:"hasAnyRole('R_DEV','R_ADMIN')").save(flush: true)
+        //new Requestmap(url:'/userApi/member/**',configAttribute:"hasAnyRole('R_DEV','R_ADMIN')").save(flush: true)
     }
 
     //初始话authority
