@@ -50,8 +50,10 @@
         </div>
         <div class="row">
             <div class="control-group">
-                <label class="control-label">${message(code: 'member.realName.label', default: 'realName')}：</label>
-                <input name="realName" type="text" class="input-normal control-text"/>
+                <label class="control-label">${message(code: 'member.realName.label', default: 'realName')}</label>
+                <div class="controls">
+                    <input name="realName" type="text" class="input-normal control-text" style="width: 300px;"/>
+                 </div>
             </div>
         </div>
         <div class="row">
