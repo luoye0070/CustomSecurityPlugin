@@ -220,6 +220,7 @@ class MemberService {
             [
                     id:member.id,
                     username:member.username,
+                    realName:member.realName,
                     enabled:member.enabled?'on':'off',
                     accountExpired:member.accountExpired?'on':'off',
                     accountLocked:member.accountLocked?'on':'off',
