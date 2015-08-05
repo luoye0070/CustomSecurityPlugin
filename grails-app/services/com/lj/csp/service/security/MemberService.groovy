@@ -163,7 +163,12 @@ class MemberService {
             return ReCode.NO_RECORD
         }
 
-        if(member.username=='dev' || member.username=='admin'){
+        def currentUser=springSecurityService.currentUser;
+        if(member==currentUser){
+            return  ReCode.NOT_ALLOW_DEL
+        }
+
+        if(member.username=='dev'){
             return  ReCode.NOT_ALLOW_DEL
         }
 
@@ -208,7 +213,6 @@ class MemberService {
         def query={p->
              return Member.createCriteria().list(p){
                  notEqual('username','dev')
-                 notEqual('username','admin')
                  if(p.username){
                      ilike('username',"%${p.username}%")
                  }
