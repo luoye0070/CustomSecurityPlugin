@@ -71,7 +71,21 @@ class MemberService {
 
 
     def update(params) {
-
+        //System.out.println("params->"+params);
+        //参数处理
+         if(!params.enabled){
+             params.enabled=false;
+         }
+        if(!params.accountExpired){
+            params.accountExpired=false;
+        }
+        if(!params.accountLocked){
+            params.accountLocked=false;
+        }
+        if(!params.passwordExpired){
+            params.passwordExpired=false;
+        }
+        //System.out.println("params1->"+params);
         def member = Member.get(params.id)
         if (!member) {
             return ReCode.NO_RECORD

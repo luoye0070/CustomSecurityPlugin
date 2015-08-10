@@ -138,6 +138,7 @@
                                             if(editType=='add')
                                                 form.getField('id').set('value',data.member.id);
                                             edtor.accept();
+                                            search.load();
                                         }
 
                                     },
@@ -152,10 +153,10 @@
                 columns = [
                     {title:"${message(code: 'member.username.label', default: 'username')}",dataIndex:'username',width:200},
                     {title:"${message(code: 'member.realName.label', default: 'realName')}",dataIndex:'realName',width:200},
-                    {title:"${message(code: 'member.enabled.label', default: 'enabled')}",dataIndex:'enabled',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
-                    {title:"${message(code: 'member.accountLocked.label', default: 'accountLocked')}",dataIndex:'accountLocked',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
-                    {title:"${message(code: 'member.accountExpired.label', default: 'accountExpired')}",dataIndex:'accountExpired',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
-                    {title:"${message(code: 'member.passwordExpired.label', default: 'passwordExpired')}",dataIndex:'passwordExpired',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
+                    {title:"${message(code: 'member.enabled.label', default: 'enabled')}",dataIndex:'enabled',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
+                    {title:"${message(code: 'member.accountLocked.label', default: 'accountLocked')}",dataIndex:'accountLocked',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
+                    {title:"${message(code: 'member.accountExpired.label', default: 'accountExpired')}",dataIndex:'accountExpired',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
+                    {title:"${message(code: 'member.passwordExpired.label', default: 'passwordExpired')}",dataIndex:'passwordExpired',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
                     {title:'角色',dataIndex:'roles',renderer : Grid.Format.multipleItemsRenderer(enumObj1)},
                     {title:'操作',dataIndex:'',width:200,renderer : function(value,obj){
                         var

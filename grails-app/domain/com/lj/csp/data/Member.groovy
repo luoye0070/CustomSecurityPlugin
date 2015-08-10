@@ -58,4 +58,13 @@ class Member {
                 passwordExpired:this.passwordExpired
         ]
     }
+
+    @Override
+    public java.lang.String toString() {
+        if(realName){
+            return realName;
+        }else{
+            return username;
+        }
+    }
 }
