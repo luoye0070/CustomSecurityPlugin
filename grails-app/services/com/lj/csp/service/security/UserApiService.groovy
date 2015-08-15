@@ -28,16 +28,26 @@ class UserApiService {
 
      //初始化Request
     void initRequest(){
-        String sql="delete from Requestmap where url in (:url)"
-        Requestmap.executeUpdate(sql,[url:['/userApi/roles/**','/userApi/authority/**',
-         '/requestmap/**','/userApi/member/**','/userApi/index/**','/userApi/updPass/**'
-        ]])
-
-        new Requestmap(url:'/userApi/**',configAttribute:"hasAnyRole('R_DEV','R_ADMIN')").save(flush: true)
-        new Requestmap(url:'/userApi/roles/**',configAttribute:"hasRole('R_DEV')").save(flush: true)
-        new Requestmap(url:'/userApi/authority/**',configAttribute:"hasRole('R_DEV')").save(flush: true)
-        new Requestmap(url:'/userApi/requestmap/**',configAttribute:"hasRole('R_DEV')").save(flush: true)
-        new Requestmap(url:'/userApi/updPass/**',configAttribute:"authenticated").save(flush: true)
+        if(!Requestmap.findByUrl("/userApi/**")){
+            new Requestmap(url:'/userApi/**',configAttribute:"hasAnyRole('R_DEV','R_ADMIN')").save(flush: true);
+            log.info("初始化之用户管理权限配置：/userApi/**");
+        }
+        if(!Requestmap.findByUrl("/userApi/roles/**")){
+            new Requestmap(url:'/userApi/roles/**',configAttribute:"hasRole('R_DEV')").save(flush: true);
+            log.info("初始化之角色管理权限配置：/userApi/roles/**");
+        }
+        if(!Requestmap.findByUrl("/userApi/authority/**")){
+            new Requestmap(url:'/userApi/authority/**',configAttribute:"hasRole('R_DEV')").save(flush: true);
+            log.info("初始化之权限管理权限配置：/userApi/authority/**");
+        }
+        if(!Requestmap.findByUrl("/userApi/requestmap/**")){
+            new Requestmap(url:'/userApi/requestmap/**',configAttribute:"hasRole('R_DEV')").save(flush: true);
+            log.info("初始化之权限配置管理权限配置：/userApi/requestmap/**");
+        }
+        if(!Requestmap.findByUrl("/userApi/updPass/**")){
+            new Requestmap(url:'/userApi/updPass/**',configAttribute:"authenticated").save(flush: true);
+            log.info("初始化之密码修改权限配置：/userApi/updPass/**");
+        }
     }
 
     //初始话authority

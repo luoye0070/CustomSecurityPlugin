@@ -10,7 +10,7 @@
 <body>
 
 <div class="container">
-    <div class="search-grid-container">
+    <div class="search-grid-container" style="margin-bottom: 70px;">
         <div id="grid"></div>
     </div>
 </div>
