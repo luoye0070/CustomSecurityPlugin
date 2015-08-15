@@ -35,8 +35,8 @@
                             <input id="password" name="password" required="required" type="password" />
                         </p>
                         <p class="keeplogin">
-                            <input type="checkbox" name="${rememberMeParameter} <g:if test='${hasCookie}'>checked='checked' </g:if>/>
-                            <label for="">记住密码</label>
+                            <input type="checkbox" name="${rememberMeParameter}" <g:if test='${hasCookie}'>checked='checked' </g:if>/>
+                            <label for="${rememberMeParameter}">记住我</label>
                         </p>
                         <p class="login button">
                             <input type="submit" value="登录" />
