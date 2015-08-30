@@ -3,7 +3,6 @@ test/
 .idea/
 .classpath
 .project
-application.properties
 CustomSecurityPlugin.iml
 CustomSecurityPlugin-grailsPlugins.iml
 workspace.xml
