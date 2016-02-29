@@ -71,7 +71,21 @@ class MemberService {
 
 
     def update(params) {
-
+        //System.out.println("params->"+params);
+        //参数处理
+         if(!params.enabled){
+             params.enabled=false;
+         }
+        if(!params.accountExpired){
+            params.accountExpired=false;
+        }
+        if(!params.accountLocked){
+            params.accountLocked=false;
+        }
+        if(!params.passwordExpired){
+            params.passwordExpired=false;
+        }
+        //System.out.println("params1->"+params);
         def member = Member.get(params.id)
         if (!member) {
             return ReCode.NO_RECORD
@@ -163,7 +177,12 @@ class MemberService {
             return ReCode.NO_RECORD
         }
 
-        if(member.username=='dev' || member.username=='admin'){
+        def currentUser=springSecurityService.currentUser;
+        if(member==currentUser){
+            return  ReCode.NOT_ALLOW_DEL
+        }
+
+        if(member.username=='dev'){
             return  ReCode.NOT_ALLOW_DEL
         }
 
@@ -208,7 +227,6 @@ class MemberService {
         def query={p->
              return Member.createCriteria().list(p){
                  notEqual('username','dev')
-                 notEqual('username','admin')
                  if(p.username){
                      ilike('username',"%${p.username}%")
                  }
@@ -220,6 +238,7 @@ class MemberService {
             [
                     id:member.id,
                     username:member.username,
+                    realName:member.realName,
                     enabled:member.enabled?'on':'off',
                     accountExpired:member.accountExpired?'on':'off',
                     accountLocked:member.accountLocked?'on':'off',

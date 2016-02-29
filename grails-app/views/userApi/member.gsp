@@ -17,7 +17,7 @@
                 <div class="control-group span8">
                     <label class="control-label">${message(code: 'member.username.label', default: 'username')}</label>
                     <div class="controls">
-                        <input type="text" class="control-text" name="username">
+                        <input type="text" class="control-text" name="username"/>
                     </div>
                 </div>
                 <div class="control-group span8">
@@ -26,7 +26,7 @@
             </div>
         </form>
     </div>
-    <div class="search-grid-container">
+    <div class="search-grid-container" style="margin-bottom: 70px;">
         <div id="grid"></div>
     </div>
 
@@ -38,28 +38,36 @@
             <div class="control-group span8">
                 <label class="control-label"><s>*</s>${message(code: 'member.username.label', default: 'username')}</label>
                 <div class="controls">
-                    <input name="username" type="text" data-rules="{required:true}" class="input-normal control-text">
+                    <input name="username" type="text" data-rules="{required:true}" class="input-normal control-text"/>
                 </div>
             </div>
             <div class="control-group span8">
                 <label class="control-label">${message(code: 'member.password.label', default: 'password')}</label>
                 <div class="controls">
-                    <input name="password" type="password" class="input-normal control-text" value="111111" id="password">
+                    <input name="password" type="password" class="input-normal control-text" value="111111" id="password"/>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="control-group">
+                <label class="control-label">${message(code: 'member.realName.label', default: 'realName')}</label>
+                <div class="controls">
+                    <input name="realName" type="text" class="input-normal control-text" style="width: 300px;"/>
+                 </div>
             </div>
         </div>
         <div class="row">
             <div class="control-group span8">
                 <label class="control-label ">${message(code: 'member.enabled.label', default: 'enabled')}</label>
                 <div class="controls">
-                    <label class="checkbox" for=""><input type="checkbox" name="enabled" checked=""></label>
+                    <label class="checkbox" for=""><input type="checkbox" name="enabled" checked=""/></label>
                 </div>
             </div>
 
             <div class="control-group span8">
                 <label class="control-label">${message(code: 'member.accountLocked.label', default: 'accountLocked')}</label>
                 <div class="controls">
-                    <label class="checkbox" for=""><input type="checkbox" name="accountLocked" checked=""></label>
+                    <label class="checkbox" for=""><input type="checkbox" name="accountLocked" checked=""/></label>
                 </div>
             </div>
 
@@ -69,14 +77,14 @@
             <div class="control-group span8">
                 <label class="control-label">${message(code: 'member.accountExpired.label', default: 'accountExpired')}</label>
                 <div class="controls">
-                    <label class="checkbox" for=""><input type="checkbox" name="accountExpired" checked=""></label>
+                    <label class="checkbox" for=""><input type="checkbox" name="accountExpired" checked=""/></label>
                 </div>
             </div>
 
             <div class="control-group span8">
                 <label class="control-label">${message(code: 'member.passwordExpired.label', default: 'passwordExpired')}</label>
                 <div class="controls">
-                    <label class="checkbox" for=""><input type="checkbox" name="passwordExpired" checked=""></label>
+                    <label class="checkbox" for=""><input type="checkbox" name="passwordExpired" checked=""/></label>
                 </div>
             </div>
 
@@ -130,6 +138,7 @@
                                             if(editType=='add')
                                                 form.getField('id').set('value',data.member.id);
                                             edtor.accept();
+                                            search.load();
                                         }
 
                                     },
@@ -143,10 +152,11 @@
                 }),
                 columns = [
                     {title:"${message(code: 'member.username.label', default: 'username')}",dataIndex:'username',width:200},
-                    {title:"${message(code: 'member.enabled.label', default: 'enabled')}",dataIndex:'enabled',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
-                    {title:"${message(code: 'member.accountLocked.label', default: 'accountLocked')}",dataIndex:'accountLocked',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
-                    {title:"${message(code: 'member.accountExpired.label', default: 'accountExpired')}",dataIndex:'accountExpired',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
-                    {title:"${message(code: 'member.passwordExpired.label', default: 'passwordExpired')}",dataIndex:'passwordExpired',width:100,renderer : function(value,obj){if(value)return "是";else return "否"; }},
+                    {title:"${message(code: 'member.realName.label', default: 'realName')}",dataIndex:'realName',width:200},
+                    {title:"${message(code: 'member.enabled.label', default: 'enabled')}",dataIndex:'enabled',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
+                    {title:"${message(code: 'member.accountLocked.label', default: 'accountLocked')}",dataIndex:'accountLocked',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
+                    {title:"${message(code: 'member.accountExpired.label', default: 'accountExpired')}",dataIndex:'accountExpired',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
+                    {title:"${message(code: 'member.passwordExpired.label', default: 'passwordExpired')}",dataIndex:'passwordExpired',width:100,renderer : function(value,obj){if(value=='on')return "是";else return "否"; }},
                     {title:'角色',dataIndex:'roles',renderer : Grid.Format.multipleItemsRenderer(enumObj1)},
                     {title:'操作',dataIndex:'',width:200,renderer : function(value,obj){
                         var

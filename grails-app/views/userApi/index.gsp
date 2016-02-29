@@ -3,7 +3,6 @@
 <head>
     <title>系统管理</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="Shortcut Icon" href="${resource(dir: 'images', file: 'favicon_picc.ico')}"/>
     <link href="${resource(dir: 'js/bui/css', file: 'dpl-min.css')}" rel="stylesheet" type="text/css"/>
     <link href="${resource(dir: 'js/bui/css', file: 'bui-min.css')}" rel="stylesheet" type="text/css"/>
     <link href="${resource(dir: 'js/bui/css', file: 'main.css')}" rel="stylesheet" type="text/css"/>

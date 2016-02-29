@@ -1,0 +1,24 @@
+1、请在Config.groovy中添加如下代码：
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.lj.csp.data.Member'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.lj.csp.data.MemberAuthority'
+grails.plugins.springsecurity.authority.className = 'com.lj.csp.data.Authority'
+grails.plugins.springsecurity.requestMap.className = 'com.lj.csp.data.Requestmap'
+
+grails.plugins.springsecurity.apf.filterProcessesUrl = '/login_check' //登录验证的路径,前台把用户名和密码提交到这个路径 ,默认是j_spring_security_check
+grails.plugins.springsecurity.apf.usernameParameter = 'username' //前台提交用户名 时用到的参数名称,可以自定义,与前台一致即可
+grails.plugins.springsecurity.apf.passwordParameter = 'password' //前台提交密码 时用到的参数名称,可以自定义,与前台一致即可
+grails.plugins.springsecurity.logout.filterProcessesUrl = '/logout' //退出验证的路径, 前台要与此一致
+
+grails.plugins.springsecurity.securityConfigType = "Requestmap"
+
+2、请在BootStrap.groovy中添加初始化代码：
+userApiService.init();
+
+3、请安装插件：
+plugins.spring-security-core=1.2.7.3
+
+4、由于在CustomSecurityPluginGrailsPlugin排除了所用的的jar包，所以请添加依赖的jar包
+ json-simple-1.1.jar
+ spring-security-core-3.0.7.RELEASE.jar
+ spring-security-web-3.0.7.RELEASE.jar

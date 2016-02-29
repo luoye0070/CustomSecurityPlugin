@@ -17,7 +17,7 @@ class Roles {
 
     String toString()
     {
-        "{$name}"
+        return name;
     }
 
 
